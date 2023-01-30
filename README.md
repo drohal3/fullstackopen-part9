@@ -155,3 +155,10 @@ If the query parameters of the request are of the wrong type or missing, a respo
 error: "malformatted parameters"
 }
 Do not copy the calculator code to file index.ts; instead, make it a [TypeScript module](https://www.typescriptlang.org/docs/handbook/modules.html) that can be imported into index.ts.
+
+## Exercise 9.6 Eslint
+**Task:**
+Configure your project to use the above (in the course materials) ESlint settings and fix all the warnings.
+
+**Solution:**
+Eslint installed. Errors/warnings listed when running ```npm run lint``` were fixed.

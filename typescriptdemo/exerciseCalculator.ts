@@ -21,23 +21,23 @@ const parseExerciseArguments = (args: Array<string>): ExerciseValues => {
     const dailyHoursArg = args.slice(3);
     let dailyHours: Array<number> = [];
 
-    dailyHoursArg.forEach((hour: any) => {
+    dailyHoursArg.forEach((hour) => {
         if (isNaN(Number(hour))) {
-            throw new Error(`\"${hour}\" in the array is not a number.`)
+            throw new Error(`"${hour}" in the array is not a number.`);
         } else {
-            dailyHours = [...dailyHours, Number(hour)]
+            dailyHours = [...dailyHours, Number(hour)];
         }
-    })
+    });
 
     if (!isNaN(Number(args[2]))) {
         return {
             target: Number(args[2]),
             dailyHours
-        }
+        };
     } else {
         throw new Error('Provided values are of invalid types!');
     }
-}
+};
 
 const calculateExercises = (dailyHours: Array<number>, target: number): ExerciseStats => {
     const periodLength = dailyHours.length;
@@ -50,7 +50,7 @@ const calculateExercises = (dailyHours: Array<number>, target: number): Exercise
         : (average < (target * 1.25))
             ? 2
             : 3;
-    let ratingDescription = ""
+    let ratingDescription = "";
     switch (rating) {
         case 1:
             ratingDescription = "Missed your target - you can do better.";
@@ -70,17 +70,17 @@ const calculateExercises = (dailyHours: Array<number>, target: number): Exercise
         rating,
         ratingDescription,
         target,
-        average }
-}
+        average };
+};
 
 try {
-    const {dailyHours, target} = parseExerciseArguments(process.argv)
-    const stats = calculateExercises(dailyHours, target)
+    const {dailyHours, target} = parseExerciseArguments(process.argv);
+    const stats = calculateExercises(dailyHours, target);
     // console.log(target)
     // console.log(dailyHours)
-    console.log(stats)
+    console.log(stats);
 } catch (error: unknown) {
-    let errorMessage = 'Something bad happened.'
+    let errorMessage = 'Something bad happened.';
     if (error instanceof Error) {
         errorMessage += ' Error: ' + error.message;
     }
