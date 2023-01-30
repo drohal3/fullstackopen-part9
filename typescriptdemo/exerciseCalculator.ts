@@ -16,30 +16,22 @@ interface ExerciseStats {
 
 const parseExerciseArguments = (args: Array<string>): ExerciseValues => {
     if (args.length < 4) throw new Error('Not enough arguments');
-    if (args.length > 4) throw new Error('Too many arguments');
 
 
-    let dailyHours = []
+    const dailyHoursArg = args.slice(3);
+    let dailyHours: Array<number> = [];
 
-    try {
-        dailyHours = JSON.parse(args[2])
-    } catch (e) {
-        throw new Error('The first argument is not an array');
-    }
-
-    if (dailyHours < 1) {
-        throw new Error('The first argument is too small array');
-    }
-
-    dailyHours.forEach((hour: any) => {
+    dailyHoursArg.forEach((hour: any) => {
         if (isNaN(Number(hour))) {
             throw new Error(`\"${hour}\" in the array is not a number.`)
+        } else {
+            dailyHours = [...dailyHours, Number(hour)]
         }
     })
 
-    if (!isNaN(Number(args[3]))) {
+    if (!isNaN(Number(args[2]))) {
         return {
-            target: Number(args[3]),
+            target: Number(args[2]),
             dailyHours
         }
     } else {
@@ -67,7 +59,7 @@ const calculateExercises = (dailyHours: Array<number>, target: number): Exercise
             ratingDescription = "Great, you hit your target!";
             break;
         case 3:
-            ratingDescription = "Amazing, it is time to increase your target! You did much better than your target.";
+            ratingDescription = "Amazing, it is time to increase your target! You did much better than aimed.";
             break;
     }
 
@@ -84,8 +76,8 @@ const calculateExercises = (dailyHours: Array<number>, target: number): Exercise
 try {
     const {dailyHours, target} = parseExerciseArguments(process.argv)
     const stats = calculateExercises(dailyHours, target)
-    console.log(target)
-    console.log(dailyHours)
+    // console.log(target)
+    // console.log(dailyHours)
     console.log(stats)
 } catch (error: unknown) {
     let errorMessage = 'Something bad happened.'

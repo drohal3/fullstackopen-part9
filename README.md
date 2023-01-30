@@ -74,3 +74,32 @@ Create an npm script, npm run calculateExercises, to call the function with hard
 
 **Solution:**
 Implemented as instructed.
+
+## Exercise 9.3 Command line
+**Task:**
+Change the previous exercises so that you can give the parameters of bmiCalculator and exerciseCalculator as command-line arguments.
+
+Your program could work eg. as follows:
+```
+$ npm run calculateBmi 180 91
+
+Overweight
+```
+and:
+```
+$ npm run calculateExercises 2 1 0 2 4.5 0 3 1 0 4
+
+{ periodLength: 9,
+trainingDays: 6,
+success: false,
+rating: 2,
+ratingDescription: 'not too bad but could be better',
+target: 2,
+average: 1.7222222222222223 }
+```
+In the example, the first argument is the target value.
+
+Handle exceptions and errors appropriately. The exerciseCalculator should accept inputs of varied lengths. Determine by yourself how you manage to collect all needed input.
+
+**Solution:**
+Parameters as arguments already implemented in previous exercises. The exerciseCalculator needed to be refactored to accept daily hours in different format.
