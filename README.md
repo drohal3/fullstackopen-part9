@@ -103,3 +103,36 @@ Handle exceptions and errors appropriately. The exerciseCalculator should accept
 
 **Solution:**
 Parameters as arguments already implemented in previous exercises. The exerciseCalculator needed to be refactored to accept daily hours in different format.
+
+## Exercise 9.4 Express
+**Task:**
+Add Express to your dependencies and create an HTTP GET endpoint hello that answers 'Hello Full Stack!'
+
+The web app should be started with the commands npm start in production mode and npm run dev in development mode. The latter should also use ts-node-dev to run the app.
+
+Replace also your existing tsconfig.json file with the following content:
+```
+{
+"compilerOptions": {
+"noImplicitAny": true,
+"noImplicitReturns": true,
+"strictNullChecks": true,
+"strictPropertyInitialization": true,
+"strictBindCallApply": true,
+"noUnusedLocals": true,
+"noUnusedParameters": true,
+"noImplicitThis": true,
+"alwaysStrict": true,
+"esModuleInterop": true,
+"declaration": true,
+}
+}
+```
+Make sure there aren't any errors!
+
+**Solution:**
+Implemented as instructed.
+
+URL http://127.0.0.1:3003/hello responds ***Hello Fullstack!***.
+
+
