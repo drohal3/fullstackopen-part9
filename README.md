@@ -162,3 +162,49 @@ Configure your project to use the above (in the course materials) ESlint setting
 
 **Solution:**
 Eslint installed. Errors/warnings listed when running ```npm run lint``` were fixed.
+
+## Exercise 9.7 WebExercises
+**Task:**
+Add an endpoint to your app for the exercise calculator. It should be used by doing an HTTP POST request to endpoint exercises with the input in the request body:
+```
+{
+"daily_exercises": [1, 0, 2, 0, 3, 0, 2.5],
+"target": 2.5
+}
+```
+The response is a JSON of the following form:
+```
+{
+"periodLength": 7,
+"trainingDays": 4,
+"success": false,
+"rating": 1,
+"ratingDescription": "bad",
+"target": 2.5,
+"average": 1.2142857142857142
+}
+```
+If the body of the request is not in the right form, a response with the proper status code and an error message are given. The error message is either
+```
+{
+error: "parameters missing"
+}
+```
+or
+```
+{
+error: "malformatted parameters"
+}
+```
+depending on the error. The latter happens if the input values do not have the right type, i.e. they are not numbers or convertible to numbers.
+
+In this exercise, you might find it beneficial to use the explicit any type when handling the data in the request body. Our ESlint configuration is preventing this but you may unset this rule for a particular line by inserting the following comment as the previous line:
+```
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+```
+You might also get in trouble with rules no-unsafe-member-access and no-unsafe-assignment. These rules may be ignored in this exercise.
+
+Note that you need to have a correct setup to get the request body; see [part 3](https://fullstackopen.com/en/part3/node_js_and_express#receiving-data).
+
+**Solution:**
+Implemented as instructed and used different libraries for logging (morgan and winston) and relaxing API security requirements (cors)
