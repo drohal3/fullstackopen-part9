@@ -222,3 +222,29 @@ The project should be runnable with npm scripts, both in development mode and, a
 
 **Solution:**
 Implemented as instructed.
+
+## Exercise 9.9: Patientor backend, step2
+**Task:**
+Fork and clone the project [patientor](https://github.com/fullstack-hy2020/patientor). Start the project with the help of the README file.
+
+You can run this command if you get an error message when trying to start the frontend:
+```
+npm update chokidar
+```
+You should be able to use the frontend without a functioning backend.
+
+Ensure that the backend answers the ping request that the frontend has made on startup. Check the developer tools to make sure it works:
+
+image: dev tools showing ping failed
+
+You might also want to have a look at the console tab. If something fails, [part 3](https://fullstackopen.com/en/part3) of the course shows how the problem can be solved.
+
+**Solution:**
+Implemented as instructed. 
+```
+app.get('/api/patients', (_req, res) => {
+    // console.log('someone pinged here');
+    res.send([]);
+});
+```
+Added to solve an 404 error.
