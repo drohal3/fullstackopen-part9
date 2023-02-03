@@ -262,3 +262,16 @@ Note that diagnoses may or may not contain the field latin. You might want to us
 
 **Solution:**
 Implemented as instructed.
+
+## Exercise 9.11: Patientor backend, step4
+**Task:**
+Create data type Patient and set up the GET endpoint /api/patients which returns all patients to the frontend, excluding field ssn. Use a [utility type](https://www.typescriptlang.org/docs/handbook/utility-types.html) to make sure you are selecting and returning only the wanted fields.
+
+In this exercise, you may assume that field gender has type string.
+
+Try the endpoint with your browser and ensure that ssn is not included in the response.
+
+**Solution:**
+Created Gender type even though I could assume it was a string. Used Omit<...> utility type to omit ssn from patient entries and Array.map to ensure the ssn is not exposed.
+
+Implemented together with previous exercise.
