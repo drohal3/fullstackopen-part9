@@ -248,3 +248,17 @@ app.get('/api/patients', (_req, res) => {
 });
 ```
 Added to solve an 404 error.
+
+## Exercises 9.10-9.11
+Similarly to Ilari's flight service (course materials), we do not use a real database in our app but instead use hardcoded data that is in the files [diagnoses.json](https://github.com/fullstack-hy2020/misc/blob/master/diagnoses.json) and [patients.json](https://github.com/fullstack-hy2020/misc/blob/master/patients.json). Get the files and store those in a directory called data in your project. All data modification can be done in runtime memory, so during this part, it is not necessary to write to a file.
+
+## Exercise 9.10: Patientor backend, step3
+**Task:**
+Create a type Diagnose and use it to create endpoint /api/diagnoses for fetching all diagnoses with HTTP GET.
+
+Structure your code properly by using meaningfully-named directories and files.
+
+Note that diagnoses may or may not contain the field latin. You might want to use [optional properties](https://www.typescriptlang.org/docs/handbook/interfaces.html#optional-properties) in the type definition.
+
+**Solution:**
+Implemented as instructed.

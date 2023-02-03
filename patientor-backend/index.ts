@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors' // needed to relax API security requirements
 
+import {getNonSensitiveEntries as getPatientEntries} from "./src/services/patientService";
+import {getEntries as getDiagnoseEntries} from "./src/services/diagnoseService";
+
 const app = express();
 app.use(cors())
 app.use(express.json());
@@ -14,7 +17,12 @@ app.get('/api/ping', (_req, res) => {
 
 app.get('/api/patients', (_req, res) => {
     // console.log('someone pinged here');
-    res.send([]);
+    res.send(getPatientEntries());
+});
+
+app.get('/api/diagnoses', (_req, res) => {
+    // console.log('someone pinged here');
+    res.send(getDiagnoseEntries());
 });
 
 app.listen(PORT, () => {
