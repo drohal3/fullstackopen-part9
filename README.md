@@ -275,3 +275,13 @@ Try the endpoint with your browser and ensure that ssn is not included in the re
 Created Gender type even though I could assume it was a string. Used Omit<...> utility type to omit ssn from patient entries and Array.map to ensure the ssn is not exposed.
 
 Implemented together with previous exercise.
+
+## Exercise 9.12: Patientor backend, step5
+**Task:**
+Create a POST endpoint /api/patients for adding patients. Ensure that you can add patients also from the frontend. You can create unique ids of type string using the uuid library:
+```
+import { v1 as uuid } from 'uuid'
+const id = uuid()
+```
+**Solution:**
+Implemented as instructed.

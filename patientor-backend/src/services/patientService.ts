@@ -1,5 +1,6 @@
+import { v1 as uuid } from 'uuid'
 import patientData from '../../data/patients.json'
-import {PatientEntry, NonSensitivePatientEntry} from '../types'
+import {PatientEntry, NonSensitivePatientEntry, NewPatientEntry} from '../types'
 
 // @ts-ignore
 const patients: Array<PatientEntry> = patientData as Array<PatientEntry>
@@ -13,5 +14,17 @@ export const getNonSensitiveEntries = (): NonSensitivePatientEntry[] => { // alt
                 {id, name, dateOfBirth, gender, occupation}
             ) => ({id, name, dateOfBirth, gender, occupation})
         ); // filtering out ssn attribute {id, name, ssn, dateOfBirth, gender, occupation}
+}
+
+export const addEntry = (entry: NewPatientEntry): PatientEntry => {
+    const id = uuid()
+    const newPatient = {
+        id,
+        ...entry
+    };
+
+    patients.push(newPatient)
+
+    return newPatient;
 }
 
