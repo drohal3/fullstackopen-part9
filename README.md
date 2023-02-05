@@ -372,3 +372,82 @@ return (
 
 **Solution:**
 Implemented as instructed.
+
+## Exercise 9.15
+**Task:**
+Let us now continue extending the app created in exercise 9.14. First, add the type information and replace the variable courseParts with the one from the example below.
+```
+// new types
+interface CoursePartBase {
+name: string;
+exerciseCount: number;
+type: string;
+}
+
+interface CourseNormalPart extends CoursePartBase {
+type: "normal";
+description: string;
+}
+
+interface CourseProjectPart extends CoursePartBase {
+type: "groupProject";
+groupProjectCount: number;
+}
+
+interface CourseSubmissionPart extends CoursePartBase {
+type: "submission";
+description: string;
+exerciseSubmissionLink: string;
+}
+
+type CoursePart = CourseNormalPart | CourseProjectPart | CourseSubmissionPart;
+
+// this is the new coursePart variable
+const courseParts: CoursePart[] = [
+{
+name: "Fundamentals",
+exerciseCount: 10,
+description: "This is the easy course part",
+type: "normal"
+},
+{
+name: "Advanced",
+exerciseCount: 7,
+description: "This is the hard course part",
+type: "normal"
+},
+{
+name: "Using props to pass data",
+exerciseCount: 7,
+groupProjectCount: 3,
+type: "groupProject"
+},
+{
+name: "Deeper type usage",
+exerciseCount: 14,
+description: "Confusing description",
+exerciseSubmissionLink: "https://fake-exercise-submit.made-up-url.dev",
+type: "submission"
+}
+]
+```
+Now we know that both interfaces CourseNormalPart and CourseSubmissionPart share not only the base attributes but also an attribute called description, which is a string in both interfaces.
+
+Your first task is to declare a new interface that includes the description attribute and extends the CoursePartBase interface. Then modify the code so that you can remove the description attribute from both CourseNormalPart and CourseSubmissionPart without getting any errors.
+
+Then create a component Part that renders all attributes of each type of course part. Use a switch case-based exhaustive type checking! Use the new component in component Content.
+
+Lastly, add another course part interface with the following attributes: name, exerciseCount, description and requirements, the latter being a string array. The objects of this type look like the following:
+```
+{
+name: "Backend development",
+exerciseCount: 21,
+description: "Typing the backend",
+requirements: ["nodejs", "jest"],
+type: "special"
+}
+```
+Then add that interface to the type union CoursePart and add corresponding data to the courseParts variable. Now, if you have not modified your Content component correctly, you should get an error, because you have not yet added support for the fourth course part type. Do the necessary changes to Content, so that all attributes for the new course part also get rendered and that the compiler doesn't produce any errors.
+
+**Solution:**
+Implemented as instructed.

@@ -1,9 +1,10 @@
 import React from 'react'
 import {ContentProps} from "../types";
+import Part from "./Part";
 
 const Content: React.FC<ContentProps> = ({courseParts}) => {
     const coursesEl = courseParts.map((coursePart, i) =>
-        <p key={i}>{coursePart.name} {coursePart.exerciseCount}</p>
+        <Part key={i} coursePart={coursePart} />
     )
 
     return (
