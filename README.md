@@ -451,3 +451,32 @@ Then add that interface to the type union CoursePart and add corresponding data 
 
 **Solution:**
 Implemented as instructed.
+
+## Exercises 9.16-9.18
+We will soon add a new type for our app, Entry, which represents a lightweight patient journal entry. It consists of a journal text, i.e. a description, a creation date, information regarding the specialist who created it and possible diagnosis codes. Diagnosis codes map to the ICD-10 codes returned from the /api/diagnoses endpoint. Our naive implementation will be that a patient has an array of entries.
+
+Before going into this, let us do some preparatory work.
+
+## Exercise 9.16: patientor, step1
+**Task:**
+Create an endpoint /api/patients/:id that returns all of the patient information for one patient, including the array of patient entries that is still empty for all the patients. For the time being, expand the backend types as follows:
+```
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Entry {
+}
+
+export interface Patient {
+id: string;
+name: string;
+ssn: string;
+occupation: string;
+gender: Gender;
+dateOfBirth: string;
+entries: Entry[]
+}
+
+export type PublicPatient = Omit<Patient, 'ssn' | 'entries'>;
+```
+
+**Solution:**
+Implemented as instructed. Expanded my own types instead of using the type/interface names given in the exercise. 

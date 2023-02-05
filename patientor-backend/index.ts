@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors' // needed to relax API security requirements
 
-import {getNonSensitiveEntries as getPatientEntries, addEntry as addPatient} from "./src/services/patientService";
+import {getNonSensitiveEntries as getPatientEntries, addEntry as addPatient, getEntry as getPatient} from "./src/services/patientService";
 import {getEntries as getDiagnoseEntries} from "./src/services/diagnoseService";
 import {toNewPatientEntry} from "./src/utils";
 
@@ -20,6 +20,17 @@ app.get('/api/patients', (_req, res) => {
     // console.log('someone pinged here');
     res.send(getPatientEntries());
 });
+
+app.get('/api/patients/:id', (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const patient = getPatient(id);
+        res.send(patient);
+    } catch (e:any) {
+        res.status(404).send(e.message);
+    }
+})
 
 app.post('/api/patients', (req, res) => {
     try {

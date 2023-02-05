@@ -28,3 +28,13 @@ export const addEntry = (entry: NewPatientEntry): PatientEntry => {
     return newPatient;
 }
 
+export const getEntry = (id: string): PatientEntry => {
+    const patient = patients.find((patient) => patient.id === id);
+
+    if (!patient) {
+        throw new Error(`Patient with id ${id} not found.`);
+    }
+
+    return patient
+}
+
