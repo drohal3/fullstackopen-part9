@@ -5,6 +5,7 @@ import { Button, Divider, Container } from "@material-ui/core";
 
 import { apiBaseUrl } from "./constants";
 import { useStateValue } from "./state";
+import {setPatientList} from "./state";
 import { Patient } from "./types";
 
 import PatientListPage from "./PatientListPage";
@@ -22,7 +23,7 @@ const App = () => {
           `${apiBaseUrl}/patients`
         );
         console.log('patientListFromAPI - fetched', patientListFromApi);
-        dispatch({ type: "SET_PATIENT_LIST", payload: patientListFromApi });
+        dispatch(setPatientList(patientListFromApi));
       } catch (e) {
         console.error(e);
       }

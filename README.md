@@ -497,3 +497,25 @@ The Application also uses [React Router](React Router) to control which view is 
 
 **Solution:**
 The loaded patient is saved in the state and not re-fetched if revisited. The state is updated only if patient data with different id needs to be shown. Did not use material icons.
+
+## Exercise 9.18: Patientor, step3
+**Task:**
+Currently, we create action objects wherever we dispatch actions, e.g. the App component has the following:
+```
+dispatch({
+type: "SET_PATIENT_LIST", payload: patientListFromApi
+});
+```
+Define [action creator functions](https://fullstackopen.com/en/part6/flux_architecture_and_redux#action-creators) in the file src/state/reducer.ts and refactor the code to use them.
+
+For example, the App should become like the following:
+```
+import { useStateValue, setPatientList } from "./state";
+
+// ...
+
+dispatch(setPatientList(patientListFromApi));
+```
+
+**Solution:**
+Implemented as instructed in Part 6 of the course.

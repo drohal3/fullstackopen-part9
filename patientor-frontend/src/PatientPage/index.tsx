@@ -1,5 +1,5 @@
 import {useParams} from 'react-router-dom';
-import { useStateValue } from "../state";
+import { useStateValue, setPatient } from "../state";
 
 
 import axios from "axios";
@@ -22,7 +22,7 @@ const PatientPage = () => {
             const fetched= await axios.get(`${apiBaseUrl}/patients/${id}`);
             const fetchedPatient:Patient = fetched.data as Patient;
             console.log('fetched patient', fetchedPatient);
-            dispatch({type:"SET_PATIENT", payload:fetchedPatient});
+            dispatch(setPatient(fetchedPatient));
         } catch (e) {
             console.log(e.message);
         }
