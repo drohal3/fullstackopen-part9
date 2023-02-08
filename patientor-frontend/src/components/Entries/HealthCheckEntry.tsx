@@ -1,15 +1,13 @@
 import {HealthCheckEntry as HealthCheckEntryType} from "../../types";
 import React from "react";
+import Diagnoses from "./Diagnoses";
 
 interface HealthCheckEntryProps {
     entry: HealthCheckEntryType;
 }
 
 const HealthCheckEntry:React.FC<{entry:HealthCheckEntryType}> = ({entry}:HealthCheckEntryProps) => {
-    const diagnoseCodes = entry.diagnosisCodes ?? [];
-    const diagnoseCodesEls = diagnoseCodes.map((code:string,i) => {
-        return (<li key={i}>{code}</li>);
-    });
+    const diagnoseCodesEls = entry.diagnosisCodes ? <Diagnoses diagnoseCodes={entry.diagnosisCodes} /> : null;
 
     return (
         <div>

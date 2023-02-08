@@ -1,15 +1,14 @@
 import {OccupationalHealthcareEntry as OccupationalHealthcareEntryType} from "../../types";
 import React from "react";
+import Diagnoses from "./Diagnoses";
 
 interface OccupationalHealthcareEntryProps {
     entry: OccupationalHealthcareEntryType;
 }
 
 const OccupationalHealthcareEntry:React.FC<{entry:OccupationalHealthcareEntryType}> = ({entry}:OccupationalHealthcareEntryProps) => {
-    const diagnoseCodes = entry.diagnosisCodes ?? [];
-    const diagnoseCodesEls = diagnoseCodes.map((code:string,i) => {
-        return (<li key={i}>{code}</li>);
-    });
+
+    const diagnoseCodesEls = entry.diagnosisCodes ? <Diagnoses diagnoseCodes={entry.diagnosisCodes} /> : null;
 
     const sickleaveEl = entry.sickLeave
         ? (<><span>Sickleave: {entry.sickLeave.endDate} - {entry.sickLeave.endDate}</span><br/></>)

@@ -537,3 +537,10 @@ You can use the same type definition for an Entry in the frontend. For these exe
 
 **Solution:**
 Implemented together with the previous exercise. Did not use icons - used text descriptions instead.
+
+## Exercise 9.21: Patientor, step6
+**Task:**
+Fetch and add diagnoses to the application state from the /api/diagnoses endpoint. Use the new diagnosis data to show the descriptions for patient's diagnosis codes
+
+**Solution:**
+Implemented as instructed

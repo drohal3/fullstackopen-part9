@@ -1,15 +1,13 @@
 import {HospitalEntry as HospitalEntryType} from "../../types";
 import React from "react";
+import Diagnoses from "./Diagnoses";
 
 interface HospitalEntryProps {
     entry: HospitalEntryType;
 }
 
 const HospitalEntry:React.FC<{entry:HospitalEntryType}> = ({entry}:HospitalEntryProps) => {
-    const diagnoseCodes = entry.diagnosisCodes ?? [];
-    const diagnoseCodesEls = diagnoseCodes.map((code:string,i) => {
-        return (<li key={i}>{code}</li>);
-    });
+    const diagnoseCodesEls = entry.diagnosisCodes ? <Diagnoses diagnoseCodes={entry.diagnosisCodes} /> : null;
 
     return (
         <div>
