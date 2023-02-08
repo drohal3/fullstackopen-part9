@@ -528,3 +528,12 @@ Use types properly in the backend! For now, there is no need to do a proper vali
 
 **Solution:**
 Implemented as instructed
+
+## Exercise 9.20: Patientor, step5
+**Task:**
+Extend a patient's page in the frontend to list the date, description and diagnoseCodes of the patient's entries.
+
+You can use the same type definition for an Entry in the frontend. For these exercises, it is enough to just copy/paste the definitions from the backend to the frontend.
+
+**Solution:**
+Implemented together with the previous exercise. Did not use icons - used text descriptions instead.
