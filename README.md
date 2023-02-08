@@ -519,3 +519,12 @@ dispatch(setPatientList(patientListFromApi));
 
 **Solution:**
 Implemented as instructed in Part 6 of the course.
+
+## Exercise 9.19: Patientor, step4
+**Task:**
+Define the types OccupationalHealthcareEntry and HospitalEntry so that those conform with the example data. Ensure that your backend returns the entries properly when you go to an individual patient's route.
+
+Use types properly in the backend! For now, there is no need to do a proper validation for all the fields of the entries in the backend, it is enough e.g. to check that the field type has a correct value.
+
+**Solution:**
+Implemented as instructed

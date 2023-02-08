@@ -1,5 +1,5 @@
 import { v1 as uuid } from 'uuid'
-import patientData from '../../data/patients.json'
+import patientData from "../../data/patients";
 import {PatientEntry, NonSensitivePatientEntry, NewPatientEntry} from '../types'
 
 // @ts-ignore
@@ -20,6 +20,7 @@ export const addEntry = (entry: NewPatientEntry): PatientEntry => {
     const id = uuid()
     const newPatient = {
         id,
+        entries: [],
         ...entry
     };
 
