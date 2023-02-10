@@ -555,3 +555,45 @@ You should use a switch case-based rendering and exhaustive type checking so tha
 
 **Solution:**
 Implemented together with the previous exercises. Did not use icons - used text descriptions instead.
+
+## Exercise 9.23: Patientor, step8
+**Task:**
+We have established that patients can have different kinds of entries. We don't yet have any way of adding entries to patients in our app, so, at the moment, it is pretty useless as an electronic medical record.
+
+Your next task is to add endpoint /api/patients/:id/entries to your backend, through which you can POST an entry for a patient.
+
+Remember that we have different kinds of entries in our app, so our backend should support all those types and check that at least all required fields are given for each type.
+
+**Solution:**
+Used swith statement to check entry type and all it's attributes.
+```
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const toNewEntryEntry = (object: any): NewEntry => {
+    let newEntry: any = {
+        description: parseDescription(object.description),
+        date: parseDate(object.date),
+        specialist: parseSpecialist(object.specialist),
+        type: parseType(object.type)
+    };
+
+    if (object.diagnosisCodes) {
+        newEntry = {...newEntry, diagnosisCodes:parseDiagnosisCodes(object.diagnosisCodes)}
+    }
+
+    switch (object.type) {
+        case "HealthCheck":
+            return {...newEntry, healthCheckRating: parseHealthCheckRating(object.healthCheckRating) };
+        case "Hospital":
+            return {...newEntry, discharge: toDischargeEntry(object.discharge)};
+        case "OccupationalHealthcare":
+            if (object.sickLeave) {
+                newEntry = {...newEntry, sickLeave: toSickLeaveEntry(object.sickLeave)};
+            }
+            return {...newEntry, employerName: parseEmployerName(object.employerName)};
+        default:
+            throw new Error("invalid entry type");
+    }
+}
+```
+
+Tested using Postman. The entries were saved in a patient.
