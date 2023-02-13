@@ -16,6 +16,7 @@ const Entries:React.FC<{entries:EntryType[]}> = ({entries}:EntriesProps) => {
     return (
       <div>
           {entries.map((entry, i) => {
+              console.log('entry',entry);
               return (<div key={i} style={entryCompStyle}><Entry entry={entry} /></div>);
           })}
       </div>

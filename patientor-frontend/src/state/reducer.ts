@@ -11,6 +11,10 @@ export type Action =
       payload: Patient;
     }
   | {
+      type: "UPDATE_PATIENT";
+      payload: Patient;
+    }
+  | {
       type: "SET_PATIENT";
       payload: Patient;
   }
@@ -45,6 +49,21 @@ export const reducer = (state: State, action: Action): State => {
         ...state,
         currentPatient: action.payload
       };
+    case "UPDATE_PATIENT":
+      console.log('state',state);
+      console.log('curr patient new', state.currentPatient ? state.patients[state.currentPatient.id] : "not defined");
+      console.log('curr patient', state.currentPatient ? state.currentPatient : "not defined");
+
+      return {
+        ...state,
+        patients: {
+          ...state.patients,
+          [action.payload.id]: action.payload
+        },
+        currentPatient: state.currentPatient && state.currentPatient.id === action.payload.id
+            ? action.payload
+            : state.currentPatient
+      };
     case "SET_DIAGNOSES":
       return {
         ...state,
@@ -63,6 +82,10 @@ export const setPatientList = (patientListFromApi:Patient[]):Action => {
 
 export const addPatient = (patient:Patient):Action => {
   return { type: "ADD_PATIENT", payload: patient};
+};
+
+export const updatePatient = (patient:Patient):Action => {
+  return { type: "UPDATE_PATIENT", payload: patient };
 };
 
 export const setPatient = (patient:Patient):Action => {

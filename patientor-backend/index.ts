@@ -52,9 +52,9 @@ app.post('/api/patients/:id/entries', (req, res) => {
     const patientId = req.params.id;
     try {
         const newEntry = toNewEntryEntry(req.body);
-        const addedEntry = addEntryToPatient(patientId, newEntry);
+        const addedEntryPatient = addEntryToPatient(patientId, newEntry);
 
-        res.json(addedEntry);
+        res.json(addedEntryPatient);
     } catch (e:any) {
         res.status(400).send(e.message);
     }

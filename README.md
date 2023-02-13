@@ -597,3 +597,55 @@ export const toNewEntryEntry = (object: any): NewEntry => {
 ```
 
 Tested using Postman. The entries were saved in a patient.
+
+## Exercise 9.24: Patientor, step9
+**Task:**
+Now that our backend supports adding entries, we want to add the corresponding functionality to the frontend. In this exercise, you should add a form for adding an entry to a patient. An intuitive place for accessing the form would be on a patient's page.
+
+In this exercise, it is enough to support one entry type, and you do not have to handle any errors. It is enough if a new entry can be created when the form is filled with valid data.
+
+Upon a successful submit, the new entry should be added to the correct patient and the patient's entries on the patient page should be updated to contain the new entry.
+
+If you like, you can re-use some of the code from the Add patient form for this exercise, but this is not a requirement.
+
+Note that the file [FormField.tsx](https://github.com/fullstack-hy2020/patientor/blob/master/src/AddPatientModal/FormField.tsx#L58) has a ready-made component called DiagnosisSelection that can be used for setting the field diagnoses.
+
+It can be used as follows:
+```
+const AddEntryForm = ({ onSubmit, onCancel }: Props) => {
+const [{ diagnoses }] = useStateValue()
+
+return (
+<Formik
+initialValues={{
+/// ...
+}}
+onSubmit={onSubmit}
+validate={values => {
+/// ...
+}}
+>
+{({ isValid, dirty, setFieldValue, setFieldTouched }) => {
+
+      return (
+        <Form className="form ui">
+          // ...
+
+          <DiagnosisSelection
+            setFieldValue={setFieldValue}
+            setFieldTouched={setFieldTouched}
+            diagnoses={Object.values(diagnoses)}
+          />    
+
+          // ...
+        </Form>
+      );
+    }}
+  </Formik>
+  );
+};
+```
+With small tweaks on types, the readily made component SelectField can be used for the health check rating.
+
+**Solution:**
+Implemented limited functionality as instructed for adding a HealthCheck entry.

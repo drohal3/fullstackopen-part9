@@ -9,6 +9,7 @@ import React from "react";
 import {apiBaseUrl} from "../constants";
 import {Patient} from "../types";
 import Entries from "../components/Entries/Entries";
+import AddEntryForm from "./AddEntryForm";
 
 const PatientPage = () => {
     const {id} = useParams<{id:string}>();
@@ -35,16 +36,6 @@ const PatientPage = () => {
         console.log('patient loaded from state', currentPatient);
     }
 
-    // const entries = currentPatient?.entries;
-
-    // const entriesEls = entries?.map((entry:Entry, i) => {
-    //     const diagnoseCodes = entry.diagnosisCodes ?? [];
-    //     const diagnoseCodesEls = diagnoseCodes.map((code:string,i) => {
-    //         return (<li key={i}>{code}</li>);
-    //     });
-    //     return (<div key={i}>{entry.date} {entry.description}<br/><ul>{diagnoseCodesEls}</ul></div>);
-    // });
-
     console.log(id);
     return currentPatient ? (
         <div>
@@ -52,6 +43,9 @@ const PatientPage = () => {
             <span>ssh: {currentPatient.ssn}</span><br/>
             <span>occupation: {currentPatient.occupation}</span>
             <h3>Entries</h3>
+            <AddEntryForm patientId={currentPatient.id} />
+            <br/>
+            <br/>
             <Entries entries={currentPatient.entries} />
         </div>
     ) : (<span>Loading...</span>);
